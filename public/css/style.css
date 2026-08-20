@@ -380,7 +380,7 @@ footer .rule{width:34px;height:3px;background:var(--orange);border-radius:2px;ma
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:900px){
-  nav.main,.searchbar{display:none}
+  nav.main,.searchbar{display:none; margin-left: 100px;}
   .burger{display:grid}
   .pdp{grid-template-columns:1fr;gap:32px}
   .split{grid-template-columns:1fr;gap:30px}
