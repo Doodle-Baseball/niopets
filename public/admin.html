@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin orders | NioPets</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .admin-wrap{max-width:1320px;margin:0 auto;padding:36px 24px 80px}
+    .admin-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px}.admin-actions{display:flex;align-items:center;gap:12px}.home-link{position:relative;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;color:var(--brown);background:var(--white);text-decoration:none;box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease}.home-link:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.home-link svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}.new-dot{display:none;position:absolute;right:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#3588e8;border:2px solid var(--white)}.new-dot.is-visible{display:block}.new-order-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:999px;background:#e7f1ff;color:#2169b8;font-size:11px;font-weight:900;letter-spacing:.5px}.new-order-badge svg{width:13px;height:13px;fill:currentColor}
+    .admin-head h1{margin-bottom:6px}.admin-head p{color:var(--muted);font-weight:700}
+    .admin-error{color:#a52a2a;font-weight:800;margin-top:12px;min-height:24px}
+    .login-card{max-width:420px;margin:80px auto;background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:var(--shadow-sm)}
+    .login-card h1{font-size:28px;margin-bottom:8px}.login-card p{color:var(--muted);font-weight:700;margin-bottom:22px}
+    .login-card label{display:grid;gap:6px;font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:14px}
+    .login-card input{padding:12px 14px;border:1px solid var(--line);border-radius:8px;font:700 15px inherit;color:var(--brown);background:var(--cream)}
+    .login-card .btn{width:100%;margin-top:8px}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}.metric{background:var(--white);padding:20px;border-radius:var(--r);box-shadow:var(--shadow-sm)}.metric small{display:block;color:var(--muted);font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.5px}.metric strong{display:block;color:var(--brown);font:800 30px 'Baloo 2',cursive;margin-top:4px}
+    .filters{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr auto auto;gap:12px;align-items:end;background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:22px;box-shadow:var(--shadow-sm)}
+    .filters label{display:grid;gap:6px;font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+    .filters input,.filters select{padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:700 14px inherit;color:var(--brown);background:var(--cream);width:100%}
+    .filters .btn{white-space:nowrap;height:42px}
+    .filter-meta{color:var(--muted);font-weight:700;margin-bottom:14px;font-size:14px}
+    .orders{display:grid;gap:16px}.order{background:var(--white);border:3px solid #d6c7b8;border-radius:var(--r);padding:22px;box-shadow:var(--shadow-sm);transition:border-color .2s ease,box-shadow .2s ease}.order-status-pending{border-color:#e9a23b}.order-status-shipping{border-color:#3588e8}.order-status-delivered{border-color:#35a66f}.order-status-done{border-color:#6b7280}.order-top{display:flex;justify-content:space-between;gap:16px;align-items:start;flex-wrap:wrap}.order h2{font-size:22px}.order-meta{color:var(--muted);font-size:13px;font-weight:700}.order-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:22px;margin-top:18px}.order h3{font-size:16px;margin-bottom:8px}.order p{font-size:14px;line-height:1.55}.order ul{padding-left:18px;font-size:14px}.order select{min-width:112px;padding:9px 30px 9px 12px;border:1px solid var(--line);border-radius:8px;font:800 13px inherit;color:var(--brown);background:var(--cream);cursor:pointer;transition:border-color .2s ease,box-shadow .2s ease}.order select:hover{border-color:#b9a590}.order select:focus{outline:none;border-color:#3588e8;box-shadow:0 0 0 3px rgba(53,136,232,.15)}.order select.payment-select-paid{background:#e5f7ed;color:#18794e;border-color:#8fd0aa}.order select.payment-select-pending{background:#fff0dc;color:#b6630d;border-color:#e9bd7d}.order select.fulfillment-select-pending{background:#fff0dc;color:#b6630d;border-color:#e9bd7d}.order select.fulfillment-select-shipping{background:#e7f1ff;color:#2169b8;border-color:#9bc4f2}.order select.fulfillment-select-delivered{background:#e5f7ed;color:#18794e;border-color:#8fd0aa}.order select.fulfillment-select-done{background:#eef0f2;color:#4b5563;border-color:#c5cbd3}.status{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.status-label{display:inline-flex;align-items:center;padding:6px 8px;border-radius:6px;background:#f4f1ed;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-weight:900}.empty{text-align:center;padding:50px;background:var(--white);border-radius:var(--r);color:var(--muted);font-weight:800}
+    @media(max-width:980px){.filters{grid-template-columns:1fr 1fr}.filters .btn{width:100%}}
+    @media(max-width:800px){.metrics{grid-template-columns:repeat(2,1fr)}.order-grid{grid-template-columns:1fr}}
+    @media(max-width:440px){.metrics{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.admin-wrap{padding-left:16px;padding-right:16px}}
+  </style>
+</head>
+<body>
+  <main class="admin-wrap">
+    <section id="login" class="login-card" hidden>
+      <h1>Admin login</h1>
+      <p>Sign in to view orders and update fulfillment status.</p>
+      <form id="loginForm">
+        <label>Email
+          <input id="loginEmail" type="email" autocomplete="username" required>
+        </label>
+        <label>Password
+          <input id="loginPassword" type="password" autocomplete="current-password" required>
+        </label>
+        <button class="btn" type="submit">Log in</button>
+        <div id="loginError" class="admin-error"></div>
+      </form>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="admin-head">
+        <div>
+          <h1>Orders dashboard</h1>
+          <p>Latest order, customer details, fulfillment status, and sales.</p>
+        </div>
+          <div class="admin-actions"><a class="home-link" href="index.html" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7"></path><path d="M5 9v11h14V9"></path><path d="M9 20v-6h6v6"></path></svg><span id="newOrderDot" class="new-dot" aria-label="New order"></span></a><button id="logout" class="btn btn-ghost" type="button">Log out</button></div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><small>Total orders</small><strong id="totalOrders">0</strong></div>
+        <div class="metric"><small>Total sales</small><strong id="totalSales">$0.00</strong></div>
+        <div class="metric"><small>Last 30 days</small><strong id="sales30">$0.00</strong></div>
+        <div class="metric"><small>Last 7 days</small><strong id="sales7">$0.00</strong></div>
+      </div>
+      <form id="filters" class="filters">
+        <label>Search
+          <input id="filterQ" type="search" placeholder="Order ref, email, name, phone">
+        </label>
+        <label>Status
+          <select id="filterStatus">
+            <option value="all">All statuses</option>
+            <option value="new">New orders</option>
+            <option value="pending">pending</option>
+            <option value="shipping">shipping</option>
+            <option value="delivered">delivered</option>
+            <option value="done">done</option>
+          </select>
+        </label>
+        <label>From
+          <input id="filterFrom" type="date">
+        </label>
+        <label>To
+          <input id="filterTo" type="date">
+        </label>
+        <button class="btn" type="submit">Apply</button>
+        <button id="clearFilters" class="btn btn-ghost" type="button">Clear</button>
+      </form>
+      <div id="filterMeta" class="filter-meta"></div>
+      <div id="loadError" class="admin-error"></div>
+      <div id="orders" class="orders"></div>
+    </section>
+  </main>
+  <script>
+    (function () {
+      'use strict';
+      var tokenKey = 'niopets_admin_token';
+      var token = sessionStorage.getItem(tokenKey) || '';
+      var statuses = ['pending', 'shipping', 'delivered', 'done'];
+      var newestOrderAt = Number(sessionStorage.getItem('niopets_admin_newest_order_at') || 0);
+      var money = function (c) { return '$' + (Number(c || 0) / 100).toFixed(2); };
+      var esc = function (s) {
+        return String(s == null ? '' : s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      };
+
+      var loginEl = document.getElementById('login');
+      var dashboardEl = document.getElementById('dashboard');
+
+      function showLogin() {
+        loginEl.hidden = false;
+        dashboardEl.hidden = true;
+      }
+
+      function showDashboard() {
+        loginEl.hidden = true;
+        dashboardEl.hidden = false;
+      }
+
+      function currentFilters() {
+        return {
+          q: document.getElementById('filterQ').value.trim(),
+          status: document.getElementById('filterStatus').value,
+          from: document.getElementById('filterFrom').value,
+          to: document.getElementById('filterTo').value,
+        };
+      }
+
+      function queryString() {
+        var f = currentFilters();
+        var params = new URLSearchParams();
+        if (f.q) params.set('q', f.q);
+        if (f.status && f.status !== 'all') params.set('status', f.status);
+        if (f.from) params.set('from', f.from);
+        if (f.to) params.set('to', f.to);
+        var s = params.toString();
+        return s ? '?' + s : '';
+      }
+
+      async function api(options) {
+        options = options || {};
+        options.headers = Object.assign(
+          { 'x-admin-token': token, 'Content-Type': 'application/json' },
+          options.headers || {}
+        );
+        var url = options.url || ('/api/admin-orders' + (options.query || ''));
+        var r = await fetch(url, options);
+        var b = await r.json().catch(function () { return {}; });
+        if (!r.ok) throw new Error(b.error || 'Request failed');
+        return b;
+      }
+
+      function address(c) {
+        return [c.first_name + ' ' + c.last_name, c.address, c.address_2, c.city + ', ' + c.state + ' ' + c.zip, c.country]
+          .filter(Boolean)
+          .map(esc)
+          .join('<br>');
+      }
+
+      function render(data) {
+        document.getElementById('totalOrders').textContent = data.metrics.total_orders;
+        document.getElementById('totalSales').textContent = money(data.metrics.total_sales_cents);
+        document.getElementById('sales30').textContent = money(data.metrics.sales_30_days_cents);
+        document.getElementById('sales7').textContent = money(data.metrics.sales_7_days_cents);
+
+        var f = data.filters || {};
+        var parts = [];
+        if (f.q) parts.push('search "' + f.q + '"');
+        if (f.status && f.status !== 'all') parts.push('status ' + f.status);
+        if (f.from) parts.push('from ' + f.from);
+        if (f.to) parts.push('to ' + f.to);
+        document.getElementById('filterMeta').textContent = parts.length
+          ? 'Showing ' + data.filtered_count + ' of ' + data.metrics.total_orders + ' orders (' + parts.join(', ') + ')'
+          : 'Showing all ' + data.metrics.total_orders + ' orders';
+
+        var newest = data.orders.reduce(function (latest, order) {
+          return Math.max(latest, new Date(order.created_at || 0).getTime() || 0);
+        }, 0);
+        var hasNewOrder = newestOrderAt && newest > newestOrderAt;
+        if (hasNewOrder) document.getElementById('newOrderDot').classList.add('is-visible');
+        if (!newestOrderAt && newest) newestOrderAt = newest;
+        sessionStorage.setItem('niopets_admin_newest_order_at', String(newestOrderAt));
+
+        var orders = document.getElementById('orders');
+        var visibleOrders = data.orders;
+        if (!visibleOrders.length) {
+          orders.innerHTML = '<div class="empty">No orders match these filters.</div>';
+          return;
+        }
+
+        orders.innerHTML = visibleOrders.map(function (o) {
+          var c = o.customer || {};
+          var lines = (o.lines || []).map(function (i) {
+            return '<li>' + esc(i.name) + (i.variant ? ' / ' + esc(i.variant) : '') + ' x ' + i.quantity + ' - ' + money(i.line_total_cents) + '</li>';
+          }).join('');
+          var fulfillmentStatus = statuses.indexOf(o.status) >= 0 ? o.status : 'pending';
+          var status = statuses.map(function (s) {
+            return '<option ' + (s === fulfillmentStatus ? 'selected' : '') + '>' + s + '</option>';
+          }).join('');
+          var paymentStatus = o.payment_status || (['paid', 'processing', 'shipped', 'shipping', 'delivered', 'done'].indexOf(o.status) >= 0 ? 'paid' : 'pending');
+          var paymentOptions = ['pending', 'paid'].map(function (s) {
+            return '<option ' + (s === paymentStatus ? 'selected' : '') + '>' + s + '</option>';
+          }).join('');
+          var isNew = hasNewOrder && new Date(o.created_at || 0).getTime() === newest;
+            return '<article class="order order-status-' + fulfillmentStatus + '"><div class="order-top"><div><h2>' + esc(o.order_ref || 'Unknown order') + '</h2><div class="order-meta">Created ' + esc(o.created_at || '-') + '</div></div><div class="status">' + (isNew ? '<span class="new-order-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 5 5 0 1 1-5-5 5 5 0 0 1 5-5Z"></path></svg>NEW ORDER</span>' : '') + '<select class="payment-select-' + paymentStatus + '" aria-label="Payment status" data-payment-order="' + esc(o.order_ref) + '">' + paymentOptions + '</select><span class="status-label">Fulfillment</span><select class="fulfillment-select-' + fulfillmentStatus + '" aria-label="Fulfillment status" data-order="' + esc(o.order_ref) + '">' + status + '</select></div></div><div class="order-grid"><div><h3>Customer</h3><p><strong>' + esc(c.email || '-') + '</strong><br>' + esc(c.phone || '-') + '<br>Country: ' + esc(c.country || 'US') + '</p></div><div><h3>Shipping details</h3><p>' + address(c) + '</p><p><strong>Notes:</strong> ' + esc(c.notes || '-') + '</p></div><div><h3>Order summary</h3><ul>' + lines + '</ul><p style="margin-top:10px"><strong>Total:</strong> ' + money(o.total_cents || 0) + '</p></div></div></article>';
+        }).join('');
+      }
+
+      async function load() {
+        document.getElementById('loadError').textContent = 'Loading orders...';
+        try {
+          render(await api({ query: queryString() }));
+          document.getElementById('loadError').textContent = '';
+          showDashboard();
+        } catch (e) {
+          if (String(e.message).indexOf('authentication') >= 0) {
+            token = '';
+            sessionStorage.removeItem(tokenKey);
+            showLogin();
+            document.getElementById('loginError').textContent = '';
+          } else {
+            showDashboard();
+            document.getElementById('loadError').textContent = e.message;
+          }
+        }
+      }
+
+      document.getElementById('loginForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var err = document.getElementById('loginError');
+        err.textContent = 'Signing in...';
+        try {
+          var r = await fetch('/api/admin-login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: document.getElementById('loginEmail').value,
+              password: document.getElementById('loginPassword').value,
+            }),
+          });
+          var b = await r.json().catch(function () { return {}; });
+          if (!r.ok) throw new Error(b.error || 'Login failed');
+          token = b.token;
+          sessionStorage.setItem(tokenKey, token);
+          err.textContent = '';
+          await load();
+        } catch (ex) {
+          err.textContent = ex.message;
+        }
+      });
+
+      document.getElementById('filters').addEventListener('submit', function (e) {
+        e.preventDefault();
+        load();
+      });
+      document.getElementById('clearFilters').addEventListener('click', function () {
+        document.getElementById('filterQ').value = '';
+        document.getElementById('filterStatus').value = 'all';
+        document.getElementById('filterFrom').value = '';
+        document.getElementById('filterTo').value = '';
+        load();
+      });
+      document.getElementById('logout').addEventListener('click', function () {
+        sessionStorage.removeItem(tokenKey);
+        token = '';
+        document.getElementById('loginPassword').value = '';
+        showLogin();
+      });
+      document.addEventListener('change', async function (e) {
+        var isPayment = e.target.matches('select[data-payment-order]');
+        var isFulfillment = e.target.matches('select[data-order]');
+        if (!isPayment && !isFulfillment) return;
+        try {
+          var update = isPayment
+            ? { order_ref: e.target.dataset.paymentOrder, payment_status: e.target.value }
+            : { order_ref: e.target.dataset.order, status: e.target.value };
+          await api({
+            method: 'PATCH',
+            body: JSON.stringify(update),
+          });
+          await load();
+        } catch (err) {
+          document.getElementById('loadError').textContent = err.message;
+        }
+      });
+
+      if (token) load();
+      else showLogin();
+      window.setInterval(function () { if (token) load(); }, 30000);
+    })();
+  </script>
+</body>
+</html>

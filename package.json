@@ -1,0 +1,21 @@
+{
+  "name": "niopets",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NioPets ecommerce store. Next.js App Router with static storefront and Whop payment APIs.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "vercel --prod",
+    "test": "node test/run-tests.js"
+  },
+  "dependencies": {
+    "next": "^15.5.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

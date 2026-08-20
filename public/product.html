@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product | NioPets</title>
+<meta name="description" content="Product details, colours, shipping times and specifications.">
+<link rel="icon" href="https://github.com/Doodle-Baseball/niopets/blob/main/final-logo.png?raw=true">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="wrap">
+    <span>&#128062; Free shipping across the United States</span>
+    <div class="topbar-links">
+      <a href="mailto:info@niopets.online">&#9993; info@niopets.online</a>
+      <a href="https://wa.me/447916627831" target="_blank" rel="noopener">&#128172; +44 7916 627831</a>
+    </div>
+  </div>
+</div>
+<header>
+  <div class="wrap head-inner">
+    <a href="index.html" class="logo" aria-label="NioPets home"><img src="https://github.com/Doodle-Baseball/niopets/blob/main/websit%20logo.png?raw=true" alt="NioPets"></a>
+    <form class="searchbar" role="search">
+      <input type="search" placeholder="Search carriers, fountains, toys" aria-label="Search products">
+      <button type="submit" aria-label="Search">&#128269;</button>
+    </form>
+    <nav class="main">
+      <a href="index.html">Home</a><a href="products.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+    </nav>
+    <div class="head-actions">
+      <button class="icon-btn" data-open-cart aria-label="Open cart">&#128722;<span class="cart-count">0</span></button>
+      <button class="icon-btn burger" data-open-menu aria-label="Open menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<div class="scrim" id="scrim" data-close></div>
+
+<aside class="mobile-nav" id="mnav">
+  <div class="mn-head">
+    <strong class="display" style="font-size:20px;color:var(--brown)">Menu</strong>
+    <button class="icon-btn" data-close aria-label="Close menu">&#10005;</button>
+  </div>
+  <form class="searchbar" style="display:block;max-width:none;margin-bottom:8px" role="search">
+    <input type="search" placeholder="Search products" aria-label="Search products">
+    <button type="submit" aria-label="Search">&#128269;</button>
+  </form>
+  <a class="mn-link" href="index.html">Home</a>
+  <a class="mn-link" href="products.html">Shop</a>
+  <a class="mn-link" href="about.html">About</a>
+  <a class="mn-link" href="contact.html">Contact</a>
+  <a class="mn-link" href="cart.html">Cart</a>
+  <div style="margin-top:22px" class="socials">
+    <a href="https://www.instagram.com/niopets3" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.84-.4.4-.64.8-.84 1.3-.16.4-.35 1-.4 2.1C2.6 8.9 2.6 9.3 2.6 12s0 3.1.07 4.3c.05 1.1.24 1.7.4 2.1.2.5.44.9.84 1.3.4.4.8.64 1.3.84.4.16 1 .35 2.1.4 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.84.4-.4.64-.8.84-1.3.16-.4.35-1 .4-2.1.07-1.2.07-1.6.07-4.3s0-3.1-.07-4.3c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.84-1.3-.4-.4-.8-.64-1.3-.84-.4-.16-1-.35-2.1-.4-1.2-.07-1.6-.07-4.7-.07zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8.1a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.2-8.3a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
+    <a href="https://wa.me/447916627831" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.26-.1-.45-.14-.64.15-.19.28-.73.94-.9 1.13-.16.19-.33.21-.62.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.29-.34.43-.5.15-.17.2-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38s1.02 2.76 1.17 2.95c.14.19 2 3.05 4.85 4.28.68.29 1.2.47 1.61.6.68.21 1.29.18 1.78.11.54-.08 1.7-.69 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33zM12.05 21.8h-.01a9.8 9.8 0 01-4.99-1.37l-.36-.21-3.71.97.99-3.62-.23-.37a9.77 9.77 0 01-1.5-5.22c0-5.4 4.4-9.8 9.81-9.8 2.62 0 5.08 1.02 6.93 2.88a9.74 9.74 0 012.87 6.93c0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5A11.7 11.7 0 0012.05 0C5.56 0 .28 5.28.28 11.76c0 2.07.54 4.1 1.57 5.88L.18 24l6.5-1.7a11.72 11.72 0 005.37 1.31h.01c6.48 0 11.76-5.28 11.76-11.76 0-3.14-1.22-6.1-3.44-8.32z"/></svg></a>
+    <a href="mailto:info@niopets.online" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4.24l-8 4.72-8-4.72V6l8 4.72L20 6v2.24z"/></svg></a>
+  </div>
+</aside>
+
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <div class="drawer-head">
+    <h3>Your cart</h3>
+    <button class="icon-btn" data-close aria-label="Close cart">&#10005;</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot" id="drawerFoot"></div>
+</aside>
+
+<div class="crumb"><div class="wrap"><a href="index.html">Home</a> / <a href="products.html">Shop</a> / <span id="pdpCrumb"></span></div></div>
+<div class="wrap pdp" id="pdpBody"></div>
+<section style="padding-top:20px"><div class="wrap" id="pdpTabs"></div></section>
+<section style="padding-top:0"><div class="wrap">
+  <div class="sec-head reveal"><span class="eyebrow">Keep looking</span><h2>You may also like</h2></div>
+  <div class="grid-products" id="relatedGrid"></div>
+</div></section>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="https://niopets.online" class="flogo"><img src="https://github.com/Doodle-Baseball/niopets/blob/main/websit%20logo.png?raw=true" alt="NioPets"></a>
+        <p>Carriers, fountains and travel gear for cats and dogs, tested at home before it reaches your cart.</p>
+        <a class="foot-site" href="https://niopets.online">niopets.online</a>
+        <div class="socials">
+          <a href="https://www.instagram.com/niopets3" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.84-.4.4-.64.8-.84 1.3-.16.4-.35 1-.4 2.1C2.6 8.9 2.6 9.3 2.6 12s0 3.1.07 4.3c.05 1.1.24 1.7.4 2.1.2.5.44.9.84 1.3.4.4.8.64 1.3.84.4.16 1 .35 2.1.4 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.84.4-.4.64-.8.84-1.3.16-.4.35-1 .4-2.1.07-1.2.07-1.6.07-4.3s0-3.1-.07-4.3c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.84-1.3-.4-.4-.8-.64-1.3-.84-.4-.16-1-.35-2.1-.4-1.2-.07-1.6-.07-4.7-.07zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8.1a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.2-8.3a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
+          <a href="https://wa.me/447916627831" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.26-.1-.45-.14-.64.15-.19.28-.73.94-.9 1.13-.16.19-.33.21-.62.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.29-.34.43-.5.15-.17.2-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38s1.02 2.76 1.17 2.95c.14.19 2 3.05 4.85 4.28.68.29 1.2.47 1.61.6.68.21 1.29.18 1.78.11.54-.08 1.7-.69 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33zM12.05 21.8h-.01a9.8 9.8 0 01-4.99-1.37l-.36-.21-3.71.97.99-3.62-.23-.37a9.77 9.77 0 01-1.5-5.22c0-5.4 4.4-9.8 9.81-9.8 2.62 0 5.08 1.02 6.93 2.88a9.74 9.74 0 012.87 6.93c0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5A11.7 11.7 0 0012.05 0C5.56 0 .28 5.28.28 11.76c0 2.07.54 4.1 1.57 5.88L.18 24l6.5-1.7a11.72 11.72 0 005.37 1.31h.01c6.48 0 11.76-5.28 11.76-11.76 0-3.14-1.22-6.1-3.44-8.32z"/></svg></a>
+          <a href="mailto:info@niopets.online" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4.24l-8 4.72-8-4.72V6l8 4.72L20 6v2.24z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Shop</h4><div class="rule"></div>
+        <ul class="foot-links" id="footShop"></ul>
+      </div>
+      <div>
+        <h4>Company</h4><div class="rule"></div>
+        <ul class="foot-links">
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="products.html">All products</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4><div class="rule"></div>
+        <ul class="foot-links">
+          <li><a href="about.html">Shipping info</a></li>
+          <li><a href="contact.html">Damaged or wrong item</a></li>
+          <li><a href="https://www.instagram.com/niopets3" target="_blank" rel="noopener">Message us on Instagram</a></li>
+          <li><a href="contact.html">Help centre</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> NioPets. All rights reserved.</span>
+      <div class="pay"><img src="https://hospirabacteriostaticwater.com/wp-content/uploads/2026/07/cards-acceptance-1-e1785794253558.png" alt="Accepted payment cards"></div>
+    </div>
+  </div>
+</footer>
+
+<a class="ig-float" href="https://www.instagram.com/niopets3" target="_blank" rel="noopener" aria-label="Message NioPets on Instagram">
+  <img src="https://aiautobase.com/assets/insta-icon-optimized-ivxYtBP0.webp" alt="Message us on Instagram" width="70" height="70">
+  <span class="ig-bubble">Any questions or need help? Message me on Instagram</span>
+</a>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var el = document.getElementById('footShop');
+  if (el) el.innerHTML = window.PRODUCTS.map(function (p) {
+    return '<li><a href="product?id=' + encodeURIComponent(p.id) + '">' + window.esc(p.name) + '</a></li>';
+  }).join('');
+});
+</script>
+<script>
+(function () {
+  var p, vi = 0, ai = 0, imgs = [], qty = 1;
+
+  function paint() {
+    var v = p.variants[vi];
+    document.getElementById('pdpBody').innerHTML =
+      '<div><div class="gallery-main"><img src="' + window.esc(imgs[ai]) + '" alt="' + window.esc(p.name + ' ' + v.n) + '"></div>' +
+      '<div class="thumbs">' + imgs.map(function (im, i) {
+        return '<img src="' + window.esc(im) + '" class="' + (i === ai ? 'on' : '') + '" data-img="' + i + '" alt="View ' + (i + 1) + '">';
+      }).join('') + '</div></div>' +
+      '<div><div class="stars" style="font-size:15px">' + window.stars(p.rating) + ' <span>' + p.rating + ', ' + p.reviews + ' reviews</span></div>' +
+      '<h1>' + window.esc(p.name) + '</h1><p class="tagline">' + window.esc(p.tagline) + '</p>' +
+      '<div class="pdp-price"><span class="p">' + window.money(p.price) + '</span><span class="was">' + window.money(p.compareAt) + '</span></div>' +
+      '<div class="save-note">You save ' + window.money(p.compareAt - p.price) + ' with free US shipping</div>' +
+      '<div class="opt-label">' + window.esc(p.optionLabel) + ' <span>' + window.esc(v.n) + '</span></div>' +
+      '<div class="variants">' + p.variants.map(function (x, i) {
+        return '<button class="variant' + (i === vi ? ' on' : '') + '" data-var="' + i + '"><i style="background:' + window.esc(x.c) + '"></i>' + window.esc(x.n) + '</button>';
+      }).join('') + '</div>' +
+      '<div class="qty-row"><div class="qty">' +
+      '<button data-q="-1" aria-label="Decrease quantity">&minus;</button>' +
+      '<input id="qtyInput" type="number" min="1" max="' + (p.maxQuantity || 10) + '" value="' + qty + '" aria-label="Quantity">' +
+      '<button data-q="1" aria-label="Increase quantity">+</button></div>' +
+      '<span style="color:var(--muted);font-weight:700;font-size:14px">Unit weight: ' + window.esc(v.w) + '</span></div>' +
+      '<div class="buy-row">' +
+      '<button class="btn btn-primary" id="addBtn">Add to cart, ' + window.money(p.price * qty) + '</button>' +
+      '<button class="btn btn-brown" id="buyBtn">Buy it now</button></div>' +
+      '<div class="ship-box">' +
+      '<div class="ship-line"><span class="pill-ico" style="background:rgba(46,158,91,.15);color:var(--green)">&#128666;</span><div><strong>Shipping: ' + window.esc(p.shipCost) + '</strong><small>Delivered across the US in ' + window.esc(p.shipTime) + ', tracked</small></div></div>' +
+      '<div class="ship-line"><span class="pill-ico" style="background:rgba(245,166,35,.2);color:var(--gold)">&#128230;</span><div><strong>Processing time</strong><small>' + window.esc(p.processing) + ' before dispatch</small></div></div>' +
+      '<div class="ship-line"><span class="pill-ico" style="background:rgba(90,150,220,.16);color:var(--blue)">&#128172;</span><div><strong>Problem with your order?</strong><small>Message us within 48 hours of delivery and we will make it right</small></div></div>' +
+      '</div></div>';
+  }
+
+  function paintTabs() {
+    var specRows = Object.keys(p.specs).map(function (k) {
+      return '<div>' + window.esc(k) + '</div><div>' + window.esc(p.specs[k]) + '</div>';
+    }).join('');
+    var names = ['Description', 'Specifications', 'Shipping'].concat(p.care ? ['Care and use'] : []);
+    document.getElementById('pdpTabs').innerHTML =
+      '<div class="tabs">' + names.map(function (n, i) {
+        return '<button class="tab' + (i === 0 ? ' on' : '') + '" data-tab="' + i + '">' + n + '</button>';
+      }).join('') + '</div>' +
+      '<div class="tab-panel on">' + p.desc.map(function (x) { return '<p>' + window.esc(x) + '</p>'; }).join('') +
+      '<h3 style="margin:22px 0 10px;font-size:20px">What makes it good</h3><ul>' +
+      p.features.map(function (f) { return '<li>' + window.esc(f) + '</li>'; }).join('') + '</ul></div>' +
+      '<div class="tab-panel"><div class="spec">' + specRows + '</div></div>' +
+      '<div class="tab-panel">' +
+      '<p><strong style="color:var(--brown)">Shipping cost:</strong> ' + window.esc(p.shipCost) + ', anywhere in the United States, with tracking on every parcel.</p>' +
+      '<p><strong style="color:var(--brown)">Processing:</strong> ' + window.esc(p.processing) + '. We check each item by hand before it goes out.</p>' +
+      '<p><strong style="color:var(--brown)">Delivery:</strong> ' + window.esc(p.shipTime) + ' after dispatch to any US address. Remote areas can take a few days longer.</p>' +
+      '<p><strong style="color:var(--brown)">Damaged or wrong item:</strong> message us within 48 hours of delivery with a photo and we will sort it out.</p></div>' +
+      (p.care ? '<div class="tab-panel"><ul>' + p.care.map(function (c) { return '<li>' + window.esc(c) + '</li>'; }).join('') + '</ul></div>' : '');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var id = new URLSearchParams(location.search).get('id');
+    p = window.findProduct(id);
+    if (!p) { location.replace('products.html'); return; }
+
+    document.title = p.name + ' | NioPets';
+    document.getElementById('pdpCrumb').textContent = p.name;
+    imgs = window.galleryFor(p, 0);
+    paint(); paintTabs();
+
+    document.getElementById('relatedGrid').innerHTML = window.PRODUCTS
+      .filter(function (x) { return x.id !== p.id; }).slice(0, 3).map(window.productCard).join('');
+    window.initReveal();
+
+    document.addEventListener('click', function (e) {
+      var t = e.target;
+      var thumb = t.closest('[data-img]');
+      if (thumb) { ai = +thumb.dataset.img; paint(); return; }
+      var vb = t.closest('[data-var]');
+      if (vb) { vi = +vb.dataset.var; imgs = window.galleryFor(p, vi); ai = 0; paint(); return; }
+      var qb = t.closest('[data-q]');
+      if (qb) {
+        qty = Math.max(1, Math.min(p.maxQuantity || 10, qty + (+qb.dataset.q)));
+        paint(); return;
+      }
+      var tab = t.closest('[data-tab]');
+      if (tab) {
+        var i = +tab.dataset.tab;
+        document.querySelectorAll('#pdpTabs .tab').forEach(function (x, n) { x.classList.toggle('on', n === i); });
+        document.querySelectorAll('#pdpTabs .tab-panel').forEach(function (x, n) { x.classList.toggle('on', n === i); });
+        return;
+      }
+      if (t.id === 'addBtn') { window.Cart.add(p.id, p.variants[vi].n, qty); qty = 1; paint(); window.openCart(); }
+      if (t.id === 'buyBtn') { window.Cart.add(p.id, p.variants[vi].n, qty); location.href = 'checkout.html'; }
+    });
+
+    document.addEventListener('change', function (e) {
+      if (e.target.id !== 'qtyInput') return;
+      var val = parseInt(e.target.value, 10);
+      qty = (!isFinite(val) || val < 1) ? 1 : Math.min(p.maxQuantity || 10, val);
+      paint();
+    });
+  });
+})();
+</script>
+</body>
+</html>
