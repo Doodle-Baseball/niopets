@@ -413,7 +413,9 @@ footer .rule{width:34px;height:3px;background:var(--orange);border-radius:2px;ma
   .foot-grid{grid-template-columns:1fr;gap:28px}
   .head-inner{height:70px;gap:14px}
   .logo img{height:36px}
-  .hero-grid{padding:34px 0 56px;margin-top:0}
+  .hero-grid{
+     /* padding:34px 0 56px; */
+             margin-top:0}
   .hero-art{margin-top:30px}
   .fc-rating{display:none}
   .f2{grid-template-columns:1fr}
