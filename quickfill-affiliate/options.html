@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="options.css">
+  <title>QuickFill Affiliate — Options</title>
+</head>
+<body>
+  <div class="wrap">
+    <header class="page-head">
+      <img src="icons/icon128.png" alt="" width="34" height="34">
+      <div>
+        <h1>QuickFill Affiliate</h1>
+        <p>Profiles, toggles and per-site overrides. Nothing here ever leaves your browser.</p>
+      </div>
+    </header>
+
+    <!-- ---------------------------------------------------------------- -->
+    <section class="card">
+      <h2>Profiles</h2>
+      <div class="row profile-row">
+        <label for="profileSelect">Active profile</label>
+        <select id="profileSelect"></select>
+        <button id="newProfile" class="btn ghost">New</button>
+        <button id="dupProfile" class="btn ghost">Duplicate</button>
+        <button id="renameProfile" class="btn ghost">Rename</button>
+        <button id="deleteProfile" class="btn ghost danger">Delete</button>
+      </div>
+      <p class="note">The active profile is what the popup and the keyboard shortcut use.</p>
+    </section>
+
+    <!-- ---------------------------------------------------------------- -->
+    <section class="card">
+      <h2>Profile fields</h2>
+      <div id="fields" class="fields"></div>
+      <div class="row">
+        <button id="resetProfile" class="btn ghost">Reset this profile to defaults</button>
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------------------- -->
+    <section class="card">
+      <h2>Behaviour</h2>
+      <label class="toggle">
+        <input type="checkbox" id="overwriteExisting">
+        <span><b>Overwrite existing values</b><small>Fill fields that already contain text. Off by default.</small></span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="acceptNewsletters">
+        <span><b>Auto-accept newsletters</b><small>Also tick marketing / mailing-list checkboxes. Off by default.</small></span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="fillOnLoad">
+        <span><b>Fill on page load automatically</b><small>Runs on every page as it loads. Off by default.</small></span>
+      </label>
+    </section>
+
+    <!-- ---------------------------------------------------------------- -->
+    <section class="card">
+      <h2>Site overrides</h2>
+      <p class="note">
+        Map a CSS selector on a domain to a profile key. Overrides are checked
+        <b>before</b> the generic rules, so a form you hand-fix once keeps working.
+      </p>
+      <div class="ov-head">
+        <span>Domain</span><span>CSS selector</span><span>Profile key</span><span></span>
+      </div>
+      <div id="overrides" class="overrides"></div>
+      <button id="addOverride" class="btn ghost">+ Add override</button>
+    </section>
+
+    <!-- ---------------------------------------------------------------- -->
+    <section class="card">
+      <h2>Backup</h2>
+      <div class="row">
+        <button id="exportBtn" class="btn ghost">Export JSON</button>
+        <button id="importBtn" class="btn ghost">Import JSON</button>
+        <input type="file" id="importFile" accept="application/json,.json" hidden>
+      </div>
+      <p class="note">Export writes profiles, settings and overrides to a file. Import replaces what is stored.</p>
+    </section>
+
+    <div class="save-bar">
+      <button id="save" class="btn primary">Save changes</button>
+      <span class="dirty" id="dirty" hidden>Unsaved changes</span>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="options.js"></script>
+</body>
+</html>
