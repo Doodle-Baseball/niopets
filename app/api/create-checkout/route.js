@@ -42,13 +42,20 @@ const ALLOWED_ORIGINS = [
   'http://127.0.0.1:5500',
 ];
 
+/** Vercel preview/production deployment URLs, e.g. https://niopets-8lz9bdfyc-wahabs-projects-0cb24d01.vercel.app */
+const VERCEL_ORIGIN_RE = /^https:\/\/[a-z0-9-]+\.vercel\.app$/i;
+
+function isAllowedOrigin(origin) {
+  return !!origin && (ALLOWED_ORIGINS.includes(origin) || VERCEL_ORIGIN_RE.test(origin));
+}
+
 function corsHeaders(origin) {
   const headers = {
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Max-Age': '86400',
   };
-  if (origin && ALLOWED_ORIGINS.includes(origin)) {
+  if (isAllowedOrigin(origin)) {
     headers['Access-Control-Allow-Origin'] = origin;
     headers.Vary = 'Origin';
   }
@@ -112,7 +119,7 @@ export async function POST(request) {
   const origin = request.headers.get('origin');
   const headers = corsHeaders(origin);
 
-  if (origin && !ALLOWED_ORIGINS.includes(origin)) {
+  if (origin && !isAllowedOrigin(origin)) {
     return NextResponse.json({ error: 'Origin not allowed' }, { status: 403, headers });
   }
 
@@ -153,7 +160,7 @@ export async function POST(request) {
 
   const orderRef = makeOrderRef();
   const totalDollars = priced.totalCents / 100;
-  const returnBase = origin && ALLOWED_ORIGINS.includes(origin) ? origin : SITE_URL;
+  const returnBase = isAllowedOrigin(origin) ? origin : SITE_URL;
 
   let whop;
   try {
