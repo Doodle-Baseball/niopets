@@ -240,19 +240,26 @@ export async function POST(request) {
     );
   }
 
-  await saveOrder(orderRef, {
-    order_ref: orderRef,
-    status: 'awaiting_payment',
-    created_at: new Date().toISOString(),
-    plan_id: planId,
-    session_id: sessionId,
-    subtotal_cents: priced.subtotalCents,
-    shipping_cents: priced.shippingCents,
-    tax_cents: priced.taxCents,
-    total_cents: priced.totalCents,
-    lines: priced.lines,
-    customer,
-  });
+  try {
+    await saveOrder(orderRef, {
+      order_ref: orderRef,
+      status: 'awaiting_payment',
+      created_at: new Date().toISOString(),
+      plan_id: planId,
+      session_id: sessionId,
+      subtotal_cents: priced.subtotalCents,
+      shipping_cents: priced.shippingCents,
+      tax_cents: priced.taxCents,
+      total_cents: priced.totalCents,
+      lines: priced.lines,
+      customer,
+    });
+  } catch (e) {
+    /* Whop already created the checkout; do not block the customer's
+       payment because the order log failed to save. The webhook also
+       calls saveOrder, so a transient failure here can still recover. */
+    console.error('[checkout] saveOrder failed', orderRef, e.message);
+  }
 
   console.log(`[checkout] ${orderRef} created, ${priced.totalCents} cents, plan ${planId}`);
 
