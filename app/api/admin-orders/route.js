@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import store from '../../../lib/store.js';
 import auth from '../../../lib/admin-auth.js';
 
-const { listOrders, saveOrder } = store;
+const { listOrders, saveOrder, deleteOrder } = store;
 const { isAuthorizedRequest } = auth;
 
 const ALLOWED_STATUSES = new Set([
@@ -153,5 +153,31 @@ export async function PATCH(request) {
   } catch (error) {
     console.error('[admin] update failed', error.message);
     return NextResponse.json({ error: 'Could not update order' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request) {
+  if (!isAuthorizedRequest(request)) {
+    return NextResponse.json({ error: 'Admin authentication required' }, { status: 401 });
+  }
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  }
+
+  const orderRef = typeof body?.order_ref === 'string' ? body.order_ref.trim() : '';
+  if (!orderRef) {
+    return NextResponse.json({ error: 'order_ref is required' }, { status: 400 });
+  }
+
+  try {
+    await deleteOrder(orderRef);
+    return NextResponse.json({ ok: true, order_ref: orderRef });
+  } catch (error) {
+    console.error('[admin] delete failed', error.message);
+    return NextResponse.json({ error: 'Could not delete order' }, { status: 500 });
   }
 }

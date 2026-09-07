@@ -201,7 +201,7 @@
             return '<option ' + (s === paymentStatus ? 'selected' : '') + '>' + s + '</option>';
           }).join('');
           var isNew = hasNewOrder && new Date(o.created_at || 0).getTime() === newest;
-            return '<article class="order order-status-' + fulfillmentStatus + '"><div class="order-top"><div><h2>' + esc(o.order_ref || 'Unknown order') + '</h2><div class="order-meta">Created ' + esc(o.created_at || '-') + '</div></div><div class="status">' + (isNew ? '<span class="new-order-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 5 5 0 1 1-5-5 5 5 0 0 1 5-5Z"></path></svg>NEW ORDER</span>' : '') + '<select class="payment-select-' + paymentStatus + '" aria-label="Payment status" data-payment-order="' + esc(o.order_ref) + '">' + paymentOptions + '</select><span class="status-label">Fulfillment</span><select class="fulfillment-select-' + fulfillmentStatus + '" aria-label="Fulfillment status" data-order="' + esc(o.order_ref) + '">' + status + '</select></div></div><div class="order-grid"><div><h3>Customer</h3><p><strong>' + esc(c.email || '-') + '</strong><br>' + esc(c.phone || '-') + '<br>Country: ' + esc(c.country || 'US') + '</p></div><div><h3>Shipping details</h3><p>' + address(c) + '</p><p><strong>Notes:</strong> ' + esc(c.notes || '-') + '</p></div><div><h3>Order summary</h3><ul>' + lines + '</ul><p style="margin-top:10px"><strong>Total:</strong> ' + money(o.total_cents || 0) + '</p></div></div></article>';
+            return '<article class="order order-status-' + fulfillmentStatus + '"><div class="order-top"><div><h2>' + esc(o.order_ref || 'Unknown order') + '</h2><div class="order-meta">Created ' + esc(o.created_at || '-') + '</div></div><div class="status">' + (isNew ? '<span class="new-order-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 5 5 0 1 1-5-5 5 5 0 0 1 5-5Z"></path></svg>NEW ORDER</span>' : '') + '<select class="payment-select-' + paymentStatus + '" aria-label="Payment status" data-payment-order="' + esc(o.order_ref) + '">' + paymentOptions + '</select><span class="status-label">Fulfillment</span><select class="fulfillment-select-' + fulfillmentStatus + '" aria-label="Fulfillment status" data-order="' + esc(o.order_ref) + '">' + status + '</select><button type="button" class="btn btn-ghost" data-delete-order="' + esc(o.order_ref) + '">Delete</button></div></div><div class="order-grid"><div><h3>Customer</h3><p><strong>' + esc(c.email || '-') + '</strong><br>' + esc(c.phone || '-') + '<br>Country: ' + esc(c.country || 'US') + '</p></div><div><h3>Shipping details</h3><p>' + address(c) + '</p><p><strong>Notes:</strong> ' + esc(c.notes || '-') + '</p></div><div><h3>Order summary</h3><ul>' + lines + '</ul><p style="margin-top:10px"><strong>Total:</strong> ' + money(o.total_cents || 0) + '</p></div></div></article>';
         }).join('');
       }
 
@@ -276,6 +276,22 @@
           await api({
             method: 'PATCH',
             body: JSON.stringify(update),
+          });
+          await load();
+        } catch (err) {
+          document.getElementById('loadError').textContent = err.message;
+        }
+      });
+
+      document.addEventListener('click', async function (e) {
+        var btn = e.target.closest('[data-delete-order]');
+        if (!btn) return;
+        var ref = btn.dataset.deleteOrder;
+        if (!window.confirm('Permanently delete order ' + ref + '? This cannot be undone.')) return;
+        try {
+          await api({
+            method: 'DELETE',
+            body: JSON.stringify({ order_ref: ref }),
           });
           await load();
         } catch (err) {
